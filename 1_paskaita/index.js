@@ -27,7 +27,7 @@ console.log(randomNumber(1, 10));
 
 const name = "Edmund";
 const surname = "Jackovskij";
-const fullName = name + " " + surname; // bad
+// const fullName = name + " " + surname; // bad
 const newFullName = `${name} ${surname}`; // good
 
 console.log(fullName);
