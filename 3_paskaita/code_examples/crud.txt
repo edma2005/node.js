@@ -1,0 +1,40 @@
+--- CRUD basics ---
+-------------------
+
+Create  |   method: POST
+Read    |   method: GET (default for most clients)
+Update  |   method: PUT / PATCH
+Delete  |   method: DELET
+
+Example od Create: FE makes fetch request to BE with options object which has method: POST (https://prnt.sc/5C-oFmeuA9tc)
+
+
+--- CRUD for car adverts website ---
+------------------------------------
+
+USERS (app has user, which can create account and login to it, also update their information)
+- Create:
+-- POST     /api/users                              | sign up (creates user)
+-- POST     /api/users/login                        | logs in (validates user)
+- Read:
+-- GET      /api/users                              | shows all users data
+-- GET      /api/users/:id                          | shows single user data (in real world we would probobly use JWT or other secure patern)
+- Update:
+-- PUT      /api/users/:id                          | updates single user data
+- Delete:
+-- DELETE   /api/users/:id                          | deletes single user data
+---- note: used USERS auth flow is only for learning CRUD purpose, in real world example it should be handled more securely.
+
+CAR ADVERTS (app users can create adverst, manage them, also se other users adverts)
+- Create:
+-- POST     /api/cars                               | creates single car adverts
+- Read:
+-- GET      /api/cars                               | guest/account: gets all cars adverts
+-- GET      /api/cars/:ownerid                      | guest/account: gets all cars for single owner
+-- GET      /api/cars/car/:carid                    | guest/account: gets single car for single user
+-- GET      /api/cars/account/:accountid            | account: gets all account cars
+-- GET      /api/cars/account/:accountid/:carid     | account: gets single account car
+- Update:
+-- PUT      /api/cars/account/:accountid/:carid     | account: gets single car and updates it's information
+- Delete:
+-- DELETE   /api/cars/account/:accountid/:carid     | account: gets single car and deletes it
