@@ -6,24 +6,60 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
+
   <body>
     <script>
       const renderCars = (cars) => {
-        const list = document.createElement("ul");
+        const list = document.createElement(`ul`);
+        // cars yra [`BMW`, `VW`]
+        // car yra `BMW`
         cars.forEach((car) => {
-          const listItem = document.createElement("li");
-          listItem.textContent = car;
-          list.append(listItem);
+          const item = document.createElement(`li`);
+          item.textContent = car;
+          list.appendChild(item);
         });
-
         document.body.append(list);
       };
-      fetch("http://127.0.0.1:3000/")
+
+      fetch("http://localhost:3000/users/r")
         .then((resp) => resp.json())
         .then((response) => {
           console.log(response);
-          renderCars(response);
+          // renderCars(response);
         });
+      fetch("http://localhost:3000/users/")
+        .then((resp) => resp.json())
+        .then((response) => {
+          console.log(response);
+          // renderCars(response);
+        });
+
+      const name = `Edma`;
+
+      fetch(
+        `http://localhost:3000/users/
+                    `,
+        {
+          method: `POST`,
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            name: `Edma`,
+          }),
+        }
+      )
+        .then((response) => {
+          if (response.ok) {
+            return response.json();
+          }
+        })
+        .then(() => {
+          console.log(name);
+        });
+      // .catch((err) => {
+      //     console.warn(err);
+      // });
     </script>
   </body>
 </html>
